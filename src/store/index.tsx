@@ -5,10 +5,14 @@ export interface RootState{
     movies: string[];
 }
 
-const initialSongsState:string[] = [];
+const RootStateInitialState={
+    songs: [],
+    movies: []
+}
+
 const songsSlice = createSlice({
     name:'song',
-    initialState:initialSongsState,
+    initialState: RootStateInitialState.songs,
     reducers:{
         // 'song' + '/' + 'addSong' = 'song/addSong'
         addSong(state:any,action: PayloadAction<string>){
@@ -24,7 +28,7 @@ const songsSlice = createSlice({
 const initialMoviesState:string[] = [];
 const moviesSlice = createSlice({
     name:'movie',
-    initialState:initialMoviesState,
+    initialState: RootStateInitialState.movies,
     reducers:{
         // 'movie' + '/' + 'addMovie' = 'movie/addMovie'
         addMovie(state:any,action: PayloadAction<string>){
