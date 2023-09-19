@@ -1,6 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { songsReducer, addSong, removeSong } from "./slices/songsSlice";
 import { moviewsReducer, addMovie, removeMovie } from "./slices/moviesSlice";
+import { reset } from "./actions";
 
 export interface RootState {
   songs: string[];
@@ -16,3 +17,4 @@ const store = configureStore({
 
 export { store };
 export { addSong, removeSong, addMovie, removeMovie };
+export { reset };
