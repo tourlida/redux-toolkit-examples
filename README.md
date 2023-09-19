@@ -22,18 +22,20 @@ In Redux Toolkit, a "slice" represents a portion of the Redux state and its asso
 ### Actions in `songsSlice`:
 - `addSong`: Adds a song to the songs list.
 - `removeSong`: Removes a song from the list.
-- `reset`: Resets the songs list to its initial state.
 
 ### Actions in `moviesSlice`:
 - `addMovie`: Adds a movie to the movies list.
 - `removeMovie`: Removes a movie from the list.
 
+### Other actions:
+- `reset`: Reset movies and songs lists.
+
+
 ## 🛠 Extra Reducers
 
 Redux Toolkit's `createSlice` automatically generates actions based on reducers we define, but sometimes we might need a slice to respond to actions dispatched by other slices or external sources. That's where `extraReducers` come in!
 
-In our app, the `moviesSlice` has an `extraReducers` field. It listens to the `reset` action from `songsSlice`. When the `reset` action of `songsSlice` is dispatched, it resets the movies list to its initial state as a side effect.
-
+In our app, both `songsSlice` and `moviesSlice` can respond to the separate reset action. For example, in the moviesSlice:
 ```typescript
 extraReducers(builder: ActionReducerMapBuilder<any>) {
   builder.addCase(songsSlice.actions.reset().type, (state: string[], action: any) => {
@@ -43,6 +45,28 @@ extraReducers(builder: ActionReducerMapBuilder<any>) {
 ```
 
 This demonstrates the power and flexibility of Redux: different parts of the state can react to the same action.
+
+## 📜 Redux Logger
+
+In our application, we have also incorporated `redux-logger`, which is a middleware that logs every action that gets dispatched to the store and the state of the store after every dispatch.
+
+### Why Use Redux Logger?
+
+- **Transparency**: By logging actions and state, you can see the flow of data and understand how actions are changing the state. This is invaluable during development to understand how your application works and to debug it.
+  
+- **Debugging**: If there's an unintended change in state or if an action doesn't produce the expected result, the logs provide immediate insight into what went wrong.
+
+- **Performance Analysis**: Observing action logs can give you insights if there's any action that's dispatched more frequently than expected, potentially leading to performance bottlenecks.
+
+To set up `redux-logger`, we add it to our list of middlewares:
+
+```typescript
+const middleware = [createLogger()];
+```
+
+With redux-logger enabled, you can now see a log of every action and state change in the console, making the development process smoother and more informative.
+
+
 
 ## 🏪 The Redux Store
 
