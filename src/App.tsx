@@ -7,7 +7,6 @@ import { reset } from "./store";
 export default function App() {
   const dispatch = useDispatch();
   const handleResetClick = () => {
-    console.log('reset->')
     dispatch(reset());
   };
 
