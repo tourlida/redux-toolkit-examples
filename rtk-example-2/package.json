@@ -50,7 +50,6 @@
     ]
   },
   "devDependencies": {
-    "@types/redux-logger": "^3.0.9",
     "tailwindcss": "^3.3.3"
   }
 }

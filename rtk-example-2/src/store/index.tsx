@@ -1,14 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { usersReducer } from "./slices/usersSlice";
-import { createLogger } from 'redux-logger';
+import { UsersState, usersReducer } from "./slices/usersSlice";
 
-
-const middlewares = [createLogger()];
-
+export interface RootState {
+    users: UsersState;
+}
 export const store = configureStore({
     reducer: {
       users: usersReducer,
     },
-    middleware: middlewares,
   });
   
+export * from './thunks/fetchUsers';
