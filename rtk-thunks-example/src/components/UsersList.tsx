@@ -4,6 +4,7 @@ import { RootState, fetchUsers, addUser } from "../store";
 import Skeleton from "./Skeleton";
 import Button from "./Button";
 import { useThunk } from "../hooks/useThunk";
+import { UserListItem } from "./UserListItem";
 
 function UsersList() {
   const [doFetchUsers, isLoadingUsers, loadingUsersError] =
@@ -26,18 +27,12 @@ function UsersList() {
   let content;
   if (isLoadingUsers) {
     content = <Skeleton times={6} className="h-10 w-full" />;
-  }else if (loadingUsersError) {
-    content =  <div>Error fetcing data...</div>;
-  }else{
-    content =data.map((user) => {
-      return (
-        <div key={user.id} className="mb-2 border rounded">
-          <div className="flex p-2 justify-between items-center cursor-pointer">
-            {user.name}
-          </div>
-        </div>
-      );
-    })
+  } else if (loadingUsersError) {
+    content = <div>Error fetcing data...</div>;
+  } else {
+    content = data.map((user) => {
+      return <UserListItem key={user.id} user={user} />;
+    });
   }
 
   return (
