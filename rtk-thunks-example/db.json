@@ -1,5 +1,22 @@
 {
-  "users": [],
+  "users": [
+    {
+      "name": "Kenny Hills-Buckridge",
+      "id": 1
+    },
+    {
+      "name": "Jerome Feeney",
+      "id": 2
+    },
+    {
+      "name": "Myra Steuber",
+      "id": 3
+    },
+    {
+      "name": "Cathy Mueller",
+      "id": 4
+    }
+  ],
   "albums": [],
   "photos": []
 }

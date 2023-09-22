@@ -3,6 +3,8 @@ import { deleteUser } from "../store";
 import { User } from "../store/slices/usersSlice";
 import { GoTrash } from "react-icons/go";
 import Button from "./Button";
+import { Accordion } from "./Accordion";
+import AlbumsList from "./ AlbumsList";
 
 interface UserListItemProps {
   user: User;
@@ -15,20 +17,18 @@ export function UserListItem({ user }: UserListItemProps) {
         doDeleteUser(user);
     }
 
-  return (
-    <div key={user.id} className="mb-2 border rounded">
-      <div className="flex p-2 justify-between items-center cursor-pointer">
-        <div className="flex flex-row items-center justify-between">
-        <Button className="mr-3" loading={isLoading} onClick={handleDeleteUser}>
+    const header = <>
+     <Button className="mr-3" loading={isLoading} onClick={handleDeleteUser}>
             <GoTrash/>
         </Button>
         {
             error && <div> Error deleting user </div>
         }
         {user.name}
-        </div>
+    
+    </>
 
-      </div>
-    </div>
-  );
+  return  <Accordion header={header}>
+    <AlbumsList user={user}/>
+  </Accordion>;
 }
