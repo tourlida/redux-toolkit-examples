@@ -1,29 +1,29 @@
 import {SerializedError, createSlice} from '@reduxjs/toolkit';
-import { fetchUsers } from '../thunks/fetchUsers';
-interface User{
+interface Request{
     id:number;
-    name:string;
+    status:string;
 }
-export interface UsersState{
-    data : User[];
+export interface RequestState{
+    data : Request[];
     isLoading:boolean;
     error: null | SerializedError;
 }
 
-const initialUsersState:UsersState = {
+const initialUsersState:RequestState = {
     data:[],
     isLoading:false,
     error: null
 }
 
-const usersSlice = createSlice({
-    name:'users',
+const requestsSlice = createSlice({
+    name:'requests',
     initialState: initialUsersState,
     reducers:{
 
     },
     extraReducers(builder) {
-        builder.addCase(fetchUsers.pending,(state,action)=>{
+        //Fetch user
+        /*builder.addCase(fetchUsers.pending,(state,action)=>{
             state.isLoading=true;
         });
 
@@ -34,8 +34,8 @@ const usersSlice = createSlice({
         builder.addCase(fetchUsers.rejected,(state,action)=>{
             state.isLoading=false;
             state.error = action.error;
-        });
+        });*/
     },
 });
 
-export const usersReducer =  usersSlice.reducer;
+export const requestsReducer =  requestsSlice.reducer;

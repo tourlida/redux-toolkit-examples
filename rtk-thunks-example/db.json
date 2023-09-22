@@ -1,0 +1,94 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Vagia"
+    },
+    {
+      "name": "Noah Koelpin",
+      "id": 2
+    },
+    {
+      "name": "Rosie Daniel DVM",
+      "id": 3
+    },
+    {
+      "name": "Miss Jana Ebert",
+      "id": 4
+    },
+    {
+      "name": "David Murazik",
+      "id": 5
+    },
+    {
+      "name": "Franklin Pagac-Johnson",
+      "id": 6
+    },
+    {
+      "name": "Santos Cremin",
+      "id": 7
+    },
+    {
+      "name": "Rudy Brakus",
+      "id": 8
+    },
+    {
+      "name": "Wilbur Fisher",
+      "id": 9
+    },
+    {
+      "name": "Mr. Jermaine Vandervort",
+      "id": 10
+    },
+    {
+      "name": "Julio Heller",
+      "id": 11
+    },
+    {
+      "name": "Randolph Cormier",
+      "id": 12
+    },
+    {
+      "name": "Dr. Donnie Skiles",
+      "id": 13
+    },
+    {
+      "name": "Sylvester Hagenes-Kihn",
+      "id": 14
+    },
+    {
+      "name": "Heather Glover",
+      "id": 15
+    },
+    {
+      "name": "Ricky Bins",
+      "id": 16
+    },
+    {
+      "name": "Dr. Roland West III",
+      "id": 17
+    },
+    {
+      "name": "Horace Auer",
+      "id": 18
+    },
+    {
+      "name": "Gayle Harber II",
+      "id": 19
+    },
+    {
+      "name": "Randall Bogisich",
+      "id": 20
+    },
+    {
+      "name": "Dr. Nathan Effertz",
+      "id": 21
+    },
+    {
+      "name": "Johanna Raynor",
+      "id": 22
+    }
+  ],
+  "albums": [],
+  "photos": []
+}

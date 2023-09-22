@@ -1,5 +1,19 @@
 import className from 'classnames';
 
+interface ButtonProps {
+    children: React.ReactNode;
+    primary?: boolean;
+    secondary?: boolean;
+    success?: boolean;
+    warning?: boolean;
+    danger?: boolean;
+    outline?: boolean;
+    rounded?: boolean;
+    className?: string;
+    onClick?: () => void; // Add more event handlers if necessary
+    // ... you can add other prop types here
+  }
+  
 function Button({
   children,
   primary,
@@ -10,7 +24,7 @@ function Button({
   outline,
   rounded,
   ...rest
-}:any) {
+}:ButtonProps) {
   const classes = className(
     rest.className,
     'flex items-center px-3 py-1.5 border',
