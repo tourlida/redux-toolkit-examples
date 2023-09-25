@@ -9,7 +9,7 @@ interface ButtonProps {
     danger?: boolean;
     outline?: boolean;
     rounded?: boolean;
-    loading:boolean;
+    loading?:boolean;
     className?: string;
     onClick?: () => void;
   }

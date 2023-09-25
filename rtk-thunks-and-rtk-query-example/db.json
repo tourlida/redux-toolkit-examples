@@ -15,12 +15,63 @@
     {
       "name": "Cathy Mueller",
       "id": 4
+    },
+    {
+      "name": "Raquel Kuphal",
+      "id": 5
     }
   ],
-  "albums": [{
-    "id":10,
-    "title": "Hiking Trip",
-    "userId": 1
-  }],
+  "albums": [
+    {
+      "id": 10,
+      "title": "Hiking Trip",
+      "userId": 1
+    },
+    {
+      "userId": 1,
+      "title": "Licensed Frozen Car",
+      "id": 11
+    },
+    {
+      "userId": 1,
+      "title": "Recycled Rubber Table",
+      "id": 12
+    },
+    {
+      "userId": 1,
+      "title": "Licensed Metal Hat",
+      "id": 13
+    },
+    {
+      "userId": 1,
+      "title": "Refined Cotton Soap",
+      "id": 14
+    },
+    {
+      "userId": 1,
+      "title": "Modern Soft Bacon",
+      "id": 15
+    },
+    {
+      "userId": 1,
+      "title": "Licensed Granite Chips",
+      "id": 16
+    },
+    {
+      "userId": 1,
+      "title": "Fantastic Frozen Bacon",
+      "id": 17
+    },
+    {
+      "userId": 1,
+      "title": "Awesome Metal Car",
+      "id": 18
+    },
+    {
+      "userId": 4,
+      "title": "Modern Fresh Shirt",
+      "id": 19
+    }
+  ],
   "photos": []
 }
