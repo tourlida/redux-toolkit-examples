@@ -1,10 +1,10 @@
 import { useThunk } from "../hooks/useThunk";
 import { deleteUser } from "../store";
-import { User } from "../store/slices/usersSlice";
 import { GoTrash } from "react-icons/go";
 import Button from "./Button";
 import { Accordion } from "./Accordion";
 import AlbumsList from "./ AlbumsList";
+import { User } from "../store/models";
 
 interface UserListItemProps {
   user: User;

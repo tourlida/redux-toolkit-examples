@@ -2,10 +2,8 @@ import {SerializedError, createSlice} from '@reduxjs/toolkit';
 import { fetchUsers } from '../thunks/fetchUsers';
 import { addUser } from '../thunks/addUser';
 import { deleteUser } from '../thunks/deleteUser';
-export interface User{
-    id:number;
-    name:string;
-}
+import { User } from '../models';
+
 export interface UsersState{
     data : User[];
     isLoading:boolean;

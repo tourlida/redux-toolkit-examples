@@ -1,5 +1,5 @@
 import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react';
-import { User } from '../slices/usersSlice';
+import { User } from '../models';
 
 const albumsApi = createApi({
 reducerPath:'albums',
