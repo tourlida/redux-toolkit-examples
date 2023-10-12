@@ -97,7 +97,7 @@ function SongPlaylist() {
       style={{ width: "calc(100% - 32px)", margin: "auto", marginTop: "48px" }}
     >
       <Stack direction="row" justifyContent="space-between" mb={2}>
-        <Typography variant="h4">Song Playlist</Typography>
+        <Typography variant="h4">Songs Playlist</Typography>
         <Button
           onClick={() => handleSongAdd(createRandomSong())}
           variant="contained"

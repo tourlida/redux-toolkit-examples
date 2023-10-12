@@ -3,7 +3,7 @@ import { Movie, Song } from "../models";
 
 export const createRandomMovie = (): Movie => {
   return {
-    id: faker.number.int(),
+    id: faker.number.int(5000000000),
     title: faker.lorem.words(3),
     description: faker.lorem.sentence(),
     imageUrl: faker.image.url(),
@@ -12,7 +12,7 @@ export const createRandomMovie = (): Movie => {
 
 export const createRandomSong = (): Song => {
   return {
-    id: faker.number.int(),
+    id: faker.number.int(5000000000),
     title: faker.lorem.words(3),
     description: faker.lorem.sentence(),
     imageUrl: faker.image.url(),

@@ -22,7 +22,7 @@ import LibraryMusicIcon from "@mui/icons-material/LibraryMusic";
 import { Movie } from "../models";
 
 function MoviesPlaylist() {
-  const moviePlaylist: Movie[] = [];
+  const moviesPlaylist: Movie[] = [];
 
   const handleMovieAdd = (movie: Movie) => {};
   const handleMovieRemove = (movie: Movie) => {};
@@ -35,8 +35,7 @@ function MoviesPlaylist() {
   const handleClose = () => {
     setAnchorEl(null);
   };
-
-  const renderedSongs = moviePlaylist.map((movie) => {
+  const renderedMovies = moviesPlaylist.map((movie) => {
     return (
       <Grid item xs={12} sm={6} md={4} lg={3} key={movie.id}>
         <Card sx={{ maxWidth: 345 }} key={movie.id}>
@@ -97,7 +96,7 @@ function MoviesPlaylist() {
       style={{ width: "calc(100% - 32px)", margin: "auto", marginTop: "48px" }}
     >
       <Stack direction="row" justifyContent="space-between" mb={2}>
-        <Typography variant="h4">Song Playlist</Typography>
+        <Typography variant="h4">Movies Playlist</Typography>
         <Button
           onClick={() => handleMovieAdd(createRandomMovie())}
           variant="contained"
@@ -109,7 +108,7 @@ function MoviesPlaylist() {
         </Button>
       </Stack>
       <Grid container spacing={2} style={{ padding: "48px 0px" }}>
-        {renderedSongs}
+        {renderedMovies}
       </Grid>
     </div>
   );
