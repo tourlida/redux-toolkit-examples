@@ -31,7 +31,7 @@ function SongPlaylist() {
     return state.songs;
   });
 
-  const handleSongAdd = (song:Song) => {
+  const handleSongAdd = (song: Song) => {
     dispatch(addSong(song));
   };
 
@@ -95,6 +95,14 @@ function SongPlaylist() {
           "aria-labelledby": "fade-button",
         }}
         anchorEl={anchorEl}
+        anchorOrigin={{
+          vertical: "bottom",
+          horizontal: "center",
+        }}
+        transformOrigin={{
+          vertical: "top",
+          horizontal: "right",
+        }}
         open={open}
         onClose={handleClose}
         TransitionComponent={Fade}
