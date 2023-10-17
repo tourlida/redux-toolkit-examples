@@ -1,0 +1,54 @@
+{
+  "movies": [
+    {
+      "id": 1,
+      "title": "Vomito Soluta Trucido",
+      "description": "Suscipit ullus tondeo.",
+      "imageUrl": "https://picsum.photos/seed/gOdQQ/640/480"
+    },
+    {
+      "id": 2,
+      "title": "Tremo Cohaero Amiculum",
+      "description": "Cotidie cupio corpus compono aggero.",
+      "imageUrl": "https://picsum.photos/seed/w4v7WauzbU/640/480"
+    },
+    {
+      "id": 3,
+      "title": "Verecundia Fugit Velociter",
+      "description": "Crastinus caterva summopere vinco.",
+      "imageUrl": "https://loremflickr.com/640/480?lock=5472803241328640"
+    },
+    {
+      "id": 4,
+      "title": "Adsum Alius Spargo",
+      "description": "Assumenda vigilo capto angulus uterque vilicus ante aegrotatio demonstro porro.",
+      "imageUrl": "https://picsum.photos/seed/GE7g6/640/480"
+    }
+  ],
+  "songs": [
+    {
+      "id": 1,
+      "title": "Vomito Soluta Trucido",
+      "description": "Suscipit ullus tondeo.",
+      "imageUrl": "https://picsum.photos/seed/gOdQQ/640/480"
+    },
+    {
+      "id": 2,
+      "title": "Tremo Cohaero Amiculum",
+      "description": "Cotidie cupio corpus compono aggero.",
+      "imageUrl": "https://picsum.photos/seed/w4v7WauzbU/640/480"
+    },
+    {
+      "id": 3,
+      "title": "Verecundia Fugit Velociter",
+      "description": "Crastinus caterva summopere vinco.",
+      "imageUrl": "https://loremflickr.com/640/480?lock=5472803241328640"
+    },
+    {
+      "id": 4,
+      "title": "Adsum Alius Spargo",
+      "description": "Assumenda vigilo capto angulus uterque vilicus ante aegrotatio demonstro porro.",
+      "imageUrl": "https://picsum.photos/seed/GE7g6/640/480"
+    }
+  ]
+}
