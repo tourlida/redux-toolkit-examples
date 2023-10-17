@@ -1,12 +1,22 @@
-import { configureStore } from "@reduxjs/toolkit";
+import { SerializedError, configureStore } from "@reduxjs/toolkit";
 import {  songsReducer } from "./slices/songsSlice";
 import { moviesReducer } from "./slices/moviesSlice";
 import { Movie, Song } from "../models";
 import { reset } from "./actions";
 
 
-export type SongsState = Song[];
-export type MovieState = Movie[];
+export type SongsState = {
+  isLoading:boolean;
+  data: Song[];
+  error: SerializedError | null;
+};
+
+export type MovieState = 
+{
+  isLoading:boolean;
+  data: Movie[];
+  error: SerializedError | null;
+}
 
 export interface RootState {
   songs: SongsState;

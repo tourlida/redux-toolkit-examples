@@ -4,9 +4,15 @@ import {
 } from "@reduxjs/toolkit";
 import { SongsState, reset } from "..";
 
+const initialSongsState:SongsState = {
+  data:[],
+  isLoading:false,
+  error: null
+}
+
 const songsSlice = createSlice({
   name: "song",
-  initialState: [] as SongsState,
+  initialState: initialSongsState,
   reducers: {
   },
   // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-explicit-any
