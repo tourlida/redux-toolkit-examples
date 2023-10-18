@@ -15,19 +15,18 @@ import {
 } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import DeleteIcon from "@mui/icons-material/Delete";
 import LibraryMusicIcon from "@mui/icons-material/LibraryMusic";
 import { Song } from "../models/index.tsx";
 import { createRandomSong } from "../utils.tsx/index.tsx";
-import { RootState } from "../store/index.tsx";
-import { useDispatch, useSelector } from "react-redux";
 import LoadingSkeleton from "./LoadingSkeleton.tsx";
+import { SerializedError } from "@reduxjs/toolkit";
 
 interface SongsPlaylistProps{
   isLoading: boolean;
   data: Song[];
-  erro:string | null;
+  error:SerializedError | null;
 }
 
 function SongsPlaylist({
@@ -37,11 +36,12 @@ function SongsPlaylist({
 }: SongsPlaylistProps) {
   const [selectedSong, setSelectedSong] = useState<Song | null>(null);
 
-  const handleSongAdd = (song: Song) => { };
+  const handleSongAdd = (song: Song) => { 
+  };
 
   const handleSongRemove = () => {
-    if (selectedSong) {}
-    handleClose();
+    if (selectedSong) {}   
+     handleClose();
   };
 
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);

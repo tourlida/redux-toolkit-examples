@@ -2,12 +2,11 @@ import { Button, Divider } from "@mui/material";
 import MoviePlaylist from "./components/MoviesPlaylist";
 import SongsPlaylist from "./components/SongsPlaylist";
 import RestartAltIcon from "@mui/icons-material/RestartAlt";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { RootState } from "./store";
 
 export default function App() {
-  const dispatch = useDispatch();
-  const handleResetClick = () => {};
+  const handleResetClick = () => { };
 
    // Use selectors to get data in the App component
    const {
@@ -15,6 +14,7 @@ export default function App() {
     error: moviesError,
     data: moviesData,
   } = useSelector((state: RootState) => state.movies);
+
   const {
     isLoading: songsLoading,
     error: songsError,

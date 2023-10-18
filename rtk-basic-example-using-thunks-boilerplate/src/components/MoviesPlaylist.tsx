@@ -8,11 +8,12 @@ import { createRandomMovie } from "../utils.tsx/index.tsx";
 
 import LoadingSkeleton from "./LoadingSkeleton.tsx";
 import { Avatar, Button, Card, CardContent, CardHeader, CardMedia, Fade, Grid, IconButton, Menu, MenuItem, Stack, Typography } from "@mui/material";
+import { SerializedError } from "@reduxjs/toolkit";
 
 interface MoviesPlaylistProps{
   isLoading: boolean;
   data: Movie[];
-  error:string | null;
+  error: SerializedError | null;
 }
 
 function MoviesPlaylist({
@@ -22,7 +23,7 @@ error: loadingMoviesError
 }:MoviesPlaylistProps) {
   const [selectedMovie, setSelectedMovie] = useState<Movie | null>(null);
 
-  const handleMovieAdd = (movie: Movie) => {  };
+  const handleMovieAdd = (movie: Movie) => { };
 
   const handleMovieRemove = () => {
     if (selectedMovie) { }
