@@ -19,19 +19,16 @@ import { useState } from "react";
 import DeleteIcon from "@mui/icons-material/Delete";
 import LibraryMusicIcon from "@mui/icons-material/LibraryMusic";
 import { Movie } from "../models/index.tsx";
-import { useSelector } from "react-redux";
-import { RootState, } from "../store/index.tsx";
 import { createRandomMovie } from "../utils.tsx/index.tsx";
 
-function MoviesPlaylist() {
+interface MoviesPlaylistProps{
+  data: Movie[];
+}
+
+function MoviesPlaylist({data}:MoviesPlaylistProps) {
   const [selectedMovie, setSelectedMovie] = useState<Movie | null>(null);
 
-  const moviesPlaylist:Movie[] =  useSelector((state:RootState)=>{
-    return state.movies;
-  });
-
   const handleMovieAdd = (movie:Movie) => {
-    console.log('movie->',movie)
   };
   const handleMovieRemove = () => {
     if (selectedMovie) {}
@@ -48,10 +45,10 @@ function MoviesPlaylist() {
     setAnchorEl(null);
   };
 
-  const renderedMovies = moviesPlaylist.map((movie) => {
+  const renderedMovies = data.map((movie) => {
     return (
       <Grid item xs={12} sm={6} md={4} lg={3} key={movie.id}>
-        <Card sx={{ maxWidth: 345 }} key={movie.id}>
+        <Card sx={{ maxWidth: 345, height: 365  }} key={movie.id}>
           <CardHeader
             avatar={
               <Avatar sx={{ bgcolor: "red" }} aria-label="recipe">

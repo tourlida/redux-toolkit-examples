@@ -19,19 +19,16 @@ import { useState } from "react";
 import DeleteIcon from "@mui/icons-material/Delete";
 import LibraryMusicIcon from "@mui/icons-material/LibraryMusic";
 import { Song } from "../models/index.tsx";
-import { RootState } from "../store/index.tsx";
-import { useSelector } from "react-redux";
 import { createRandomSong } from "../utils.tsx/index.tsx";
 
-function SongPlaylist() {
+
+interface SongPlaylistProps{
+  data: Song[];
+}
+function SongPlaylist({data}:SongPlaylistProps) {
   const [selectedSong, setSelectedSong] = useState<Song | null>(null);
 
-  const songPlaylist: Song[] = useSelector((state: RootState) => {
-    return state.songs;
-  });
-
   const handleSongAdd = (song: Song) => {
-    console.log('song->',song)
   };
 
   const handleSongRemove = () => {
@@ -51,9 +48,9 @@ function SongPlaylist() {
     setAnchorEl(null);
   };
 
-  const renderedSongs = songPlaylist.map((song) => (
+  const renderedSongs = data.map((song) => (
     <Grid item xs={12} sm={6} md={4} lg={3} key={song.id}>
-      <Card sx={{ maxWidth: 345 }}>
+      <Card sx={{ maxWidth: 345 , height: 365 }}>
         <CardHeader
           avatar={
             <Avatar sx={{ bgcolor: "red" }} aria-label="recipe">
