@@ -2,7 +2,6 @@ import { SerializedError, configureStore } from "@reduxjs/toolkit";
 import {  songsReducer } from "./slices/songsSlice";
 import { moviesReducer } from "./slices/moviesSlice";
 import { Movie, Song } from "../models";
-import { reset } from "./actions";
 
 
 export type SongsState = {
