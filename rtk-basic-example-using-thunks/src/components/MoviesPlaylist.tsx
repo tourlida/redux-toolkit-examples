@@ -38,7 +38,6 @@ function MoviesPlaylist({
   error: loadingMoviesError,
 }: MoviesPlaylistProps) {
   const [isAddingMovie, setIsAddingMovie] = useState(false);
-  const [, setIsDeletingMovie] = useState(false);
 
   const [selectedMovie, setSelectedMovie] = useState<Movie | null>(null);
   const dispatch = useDispatch();
@@ -119,8 +118,7 @@ function MoviesPlaylist({
               theme: "light",
             }
           );
-        })
-        .finally(() => setIsDeletingMovie(false));
+        });
     }
     handleClose();
   }, [dispatch, handleClose, selectedMovie]);

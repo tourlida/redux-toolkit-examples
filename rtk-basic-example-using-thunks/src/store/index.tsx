@@ -31,6 +31,6 @@ const store = configureStore({
 
 export { store };
 
-export {fetchMovies,addMovie,deleteMovie} from './thunks/moviesThunk.tsx';
-export {fetchSongs,addSong,deleteSong} from './thunks/songsThunk.tsx';
+export {addMovie,deleteMovie} from './thunks/moviesThunk.tsx';
+export {addSong,deleteSong} from './thunks/songsThunk.tsx';
 export {resetAllData} from './thunks/resetThunk.tsx';

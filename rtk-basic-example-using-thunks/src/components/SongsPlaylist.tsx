@@ -35,7 +35,6 @@ interface SongsPlaylistProps{
 
 function SongsPlaylist({data,isLoading:isLoadingSongs,error:loadingSongsError}:SongsPlaylistProps) {
   const [isAddingSong, setIsAddingSong] = useState(false);
-  const [, setIsDeletingSong] = useState(false);
 
   const [selectedSong, setSelectedSong] = useState<Song | null>(null);
   const dispatch = useDispatch();
@@ -115,8 +114,7 @@ function SongsPlaylist({data,isLoading:isLoadingSongs,error:loadingSongsError}:S
             }
           );
 
-        })
-        .finally(() => setIsDeletingSong(false));
+        });
     }
     handleClose();
   },[dispatch, handleClose, selectedSong]);

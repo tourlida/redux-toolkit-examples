@@ -1,5 +1,5 @@
 import { ActionReducerMapBuilder, createSlice } from "@reduxjs/toolkit";
-import { SongsState, addSong, deleteSong, fetchSongs, resetAllData } from "..";
+import { SongsState, addSong, deleteSong, resetAllData } from "..";
 import { Song } from "../../models";
 
 const initialSongsState: SongsState = {

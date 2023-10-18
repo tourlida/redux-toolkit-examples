@@ -4,7 +4,6 @@ import {
   MovieState,
   addMovie,
   deleteMovie,
-  fetchMovies,
   resetAllData,
 } from "..";
 import { Movie } from "../../models";
