@@ -14,76 +14,48 @@ import {
 } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useState } from "react";
 import DeleteIcon from "@mui/icons-material/Delete";
 import MovieIcon from "@mui/icons-material/Movie";
 import { Movie } from "../models/index.tsx";
 import { createRandomMovie } from "../utils.tsx/index.tsx";
-import {  addMovie, deleteMovie, fetchMovies } from "../store/index.tsx";
+import { addMovie, deleteMovie } from "../store/index.tsx";
 import { useDispatch } from "react-redux";
 import LoadingSkeleton from "./LoadingSkeleton.tsx";
 import LoadingButton from "@mui/lab/LoadingButton";
 import { toast } from "react-toastify";
+import { SerializedError } from "@reduxjs/toolkit";
 
-interface MoviesPlaylistProps{
+interface MoviesPlaylistProps {
+  isLoading: boolean;
   data: Movie[];
+  error: SerializedError | null;
 }
 
-function MoviesPlaylist({data}:MoviesPlaylistProps) {
-  const [isLoadingMovies, setIsLoadingMovies] = useState(false);
-  const [loadingMoviesError, setLoadingMoviesError] = useState(null);
+function MoviesPlaylist({
+  data,
+  isLoading: isLoadingMovies,
+  error: loadingMoviesError,
+}: MoviesPlaylistProps) {
   const [isAddingMovie, setIsAddingMovie] = useState(false);
   const [, setIsDeletingMovie] = useState(false);
 
   const [selectedMovie, setSelectedMovie] = useState<Movie | null>(null);
   const dispatch = useDispatch();
 
-  const fetchMoviesFromServer = useCallback(() => {
-    setIsLoadingMovies(true);
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    dispatch(fetchMovies())
-      .unwrap()
-      .then(() => {})
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
-      .catch((err) => setLoadingMoviesError(err))
-      .finally(() => setIsLoadingMovies(false));
-  },[dispatch]);
-
-  useEffect(() => {
-    fetchMoviesFromServer();
-  }, [dispatch, fetchMoviesFromServer]);
-
   const handleClose = useCallback(() => {
     setAnchorEl(null);
-  },[]);
+  }, []);
 
-  const handleMovieAdd =  useCallback((movie: Movie) => {
-    setIsAddingMovie(true);
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    dispatch(addMovie(movie))
-      .unwrap()
-      .then(() => {
-        toast.success("Movie added succesfully!", {
-          position: "top-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "light",
-        });
-
-        //Trigger re-fetch when movie added
-        fetchMoviesFromServer();
-      })
-      .catch(() => {
-        toast.error(
-          "Oops! There was an issue adding your movie. Please try again.",
-          {
+  const handleMovieAdd = useCallback(
+    (movie: Movie) => {
+      setIsAddingMovie(true);
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      dispatch(addMovie(movie))
+        .unwrap()
+        .then(() => {
+          toast.success("Movie added succesfully!", {
             position: "top-right",
             autoClose: 5000,
             hideProgressBar: false,
@@ -92,11 +64,27 @@ function MoviesPlaylist({data}:MoviesPlaylistProps) {
             draggable: true,
             progress: undefined,
             theme: "light",
-          }
-        );
-      })
-      .finally(() => setIsAddingMovie(false));
-  },[dispatch, fetchMoviesFromServer]);
+          });
+        })
+        .catch(() => {
+          toast.error(
+            "Oops! There was an issue adding your movie. Please try again.",
+            {
+              position: "top-right",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "light",
+            }
+          );
+        })
+        .finally(() => setIsAddingMovie(false));
+    },
+    [dispatch]
+  );
 
   const handleMovieRemove = useCallback(() => {
     if (selectedMovie) {
@@ -116,9 +104,6 @@ function MoviesPlaylist({data}:MoviesPlaylistProps) {
             progress: undefined,
             theme: "light",
           });
-
-        //Trigger re-fetch when movie added
-        fetchMoviesFromServer();
         })
         .catch(() => {
           toast.error(
@@ -138,7 +123,7 @@ function MoviesPlaylist({data}:MoviesPlaylistProps) {
         .finally(() => setIsDeletingMovie(false));
     }
     handleClose();
-  },[dispatch, fetchMoviesFromServer, handleClose, selectedMovie]);
+  }, [dispatch, handleClose, selectedMovie]);
 
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
@@ -147,7 +132,6 @@ function MoviesPlaylist({data}:MoviesPlaylistProps) {
     setSelectedMovie(movie);
     setAnchorEl(event.currentTarget);
   };
-
 
   if (isLoadingMovies) {
     return <LoadingSkeleton />;

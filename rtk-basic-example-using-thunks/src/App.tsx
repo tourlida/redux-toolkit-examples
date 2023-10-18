@@ -9,14 +9,14 @@ import { toast } from "react-toastify";
 import { RootState } from "./store";
 
 export default function App() {
-  const [,setResetLoading]=useState(true);
+  const [, setResetLoading] = useState(true);
   const dispatch = useDispatch();
 
   const handleResetClick = useCallback(() => {
     setResetLoading(true);
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
-      dispatch(resetAllData())
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    dispatch(resetAllData())
       .unwrap()
       .then(() => {
         toast.success("Playlists reseted succesfully!", {
@@ -30,7 +30,7 @@ export default function App() {
           theme: "light",
         });
       })
-      .catch(() =>{
+      .catch(() => {
         toast.error(
           "Oops! There was an issue while reseting your playlists. Please try again.",
           {
@@ -46,11 +46,19 @@ export default function App() {
         );
       })
       .finally(() => setResetLoading(false));
-  },[dispatch]);
+  }, [dispatch]);
 
   // Use selectors to get data in the App component
-  const movies = useSelector((state: RootState) => state.movies.data);
-  const songs = useSelector((state: RootState) => state.songs.data);
+  const {
+    isLoading: moviesLoading,
+    error: moviesError,
+    data: moviesData,
+  } = useSelector((state: RootState) => state.movies);
+  const {
+    isLoading: songsLoading,
+    error: songsError,
+    data: songsData,
+  } = useSelector((state: RootState) => state.songs);
 
   return (
     <>
@@ -64,9 +72,17 @@ export default function App() {
         Reset Both Playlists
       </Button>
       <Divider />
-      <MoviePlaylist data={movies}/>
+      <MoviePlaylist
+        data={moviesData}
+        isLoading={moviesLoading}
+        error={moviesError}
+      />
       <Divider />
-      <SongsPlaylist data={songs}/>
+      <SongsPlaylist
+        data={songsData}
+        isLoading={songsLoading}
+        error={songsError}
+      />
     </>
   );
 }

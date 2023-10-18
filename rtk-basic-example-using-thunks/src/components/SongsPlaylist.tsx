@@ -14,50 +14,32 @@ import {
 } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useState } from "react";
 import DeleteIcon from "@mui/icons-material/Delete";
 import LibraryMusicIcon from "@mui/icons-material/LibraryMusic";
 import { Song } from "../models/index.tsx";
 import { createRandomSong } from "../utils.tsx/index.tsx";
-import { addSong, deleteSong, fetchSongs } from "../store/index.tsx";
+import { addSong, deleteSong } from "../store/index.tsx";
 import { useDispatch } from "react-redux";
 import LoadingSkeleton from "./LoadingSkeleton.tsx";
 import LoadingButton from "@mui/lab/LoadingButton";
 import { toast } from "react-toastify";
+import { SerializedError } from "@reduxjs/toolkit";
 
 
 interface SongsPlaylistProps{
+  isLoading: boolean;
   data: Song[];
+  error: SerializedError | null;
 }
 
-function SongsPlaylist({data}:SongsPlaylistProps) {
-  const [isLoadingSongs, setIsLoadingSongs] = useState(false);
-  const [loadingSongsError, setLoadingSongsError] = useState(null);
+function SongsPlaylist({data,isLoading:isLoadingSongs,error:loadingSongsError}:SongsPlaylistProps) {
   const [isAddingSong, setIsAddingSong] = useState(false);
   const [, setIsDeletingSong] = useState(false);
 
   const [selectedSong, setSelectedSong] = useState<Song | null>(null);
   const dispatch = useDispatch();
   
-
-  const fetchSongsFromServer = useCallback(() => {
-    setIsLoadingSongs(true);
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    dispatch(fetchSongs())
-      .unwrap()
-      .then(() => setLoadingSongsError(null))
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
-      .catch((err) => setLoadingSongsError(err))
-      .finally(() => setIsLoadingSongs(false));
-  },[dispatch]);
-
-  // Initial load
-  useEffect(() => {
-    fetchSongsFromServer();
-  }, [dispatch, fetchSongsFromServer]);
-
 
   const handleClose = useCallback(() => {
     setAnchorEl(null);
@@ -96,11 +78,9 @@ function SongsPlaylist({data}:SongsPlaylistProps) {
           }
         );
 
-         //Trigger re-fetch when movie added
-         fetchSongsFromServer();
       })
       .finally(() => setIsAddingSong(false));
-  },[dispatch, fetchSongsFromServer]);
+  },[dispatch]);
 
   const handleSongRemove =useCallback(() => {
     if (selectedSong) {
@@ -135,13 +115,11 @@ function SongsPlaylist({data}:SongsPlaylistProps) {
             }
           );
 
-        //Trigger re-fetch when movie added
-        fetchSongsFromServer();
         })
         .finally(() => setIsDeletingSong(false));
     }
     handleClose();
-  },[dispatch, fetchSongsFromServer, handleClose, selectedSong]);
+  },[dispatch, handleClose, selectedSong]);
 
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
