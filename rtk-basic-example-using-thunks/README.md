@@ -102,7 +102,7 @@ Though the UI harks back to our old design, the mechanics, especially data handl
 2. **Navigate to the correct repo**:
 
    ```bash
-   cd rtk-basic-example-using-thunks-boilerplate
+   cd rtk-basic-example-using-thunks
    ```
 
 3. **Install dependencies**:
