@@ -4,16 +4,14 @@ import SongsPlaylist from "./components/SongsPlaylist";
 import RestartAltIcon from "@mui/icons-material/RestartAlt";
 import { useDispatch, useSelector } from "react-redux";
 import { resetAllData } from "./store/thunks/resetThunk";
-import { useCallback, useState } from "react";
+import { useCallback } from "react";
 import { toast } from "react-toastify";
 import { RootState } from "./store";
 
 export default function App() {
-  const [, setResetLoading] = useState(true);
   const dispatch = useDispatch();
 
   const handleResetClick = useCallback(() => {
-    setResetLoading(true);
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     dispatch(resetAllData())
@@ -45,7 +43,6 @@ export default function App() {
           }
         );
       })
-      .finally(() => setResetLoading(false));
   }, [dispatch]);
 
   // Use selectors to get data in the App component
