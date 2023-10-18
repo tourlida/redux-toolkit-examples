@@ -1,44 +1,38 @@
-import {
-  Avatar,
-  Button,
-  Card,
-  CardContent,
-  CardHeader,
-  CardMedia,
-  Fade,
-  Grid,
-  IconButton,
-  Menu,
-  MenuItem,
-  Stack,
-  Typography,
-} from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
-import { useState } from "react";
+import {  useState } from "react";
 import DeleteIcon from "@mui/icons-material/Delete";
 import LibraryMusicIcon from "@mui/icons-material/LibraryMusic";
 import { Movie } from "../models/index.tsx";
 import { createRandomMovie } from "../utils.tsx/index.tsx";
 
+import LoadingSkeleton from "./LoadingSkeleton.tsx";
+import { Avatar, Button, Card, CardContent, CardHeader, CardMedia, Fade, Grid, IconButton, Menu, MenuItem, Stack, Typography } from "@mui/material";
+
 interface MoviesPlaylistProps{
+  isLoading: boolean;
   data: Movie[];
+  error:string | null;
 }
 
-function MoviesPlaylist({data}:MoviesPlaylistProps) {
+function MoviesPlaylist({
+data,
+isLoading: isLoadingMovies,
+error: loadingMoviesError
+}:MoviesPlaylistProps) {
   const [selectedMovie, setSelectedMovie] = useState<Movie | null>(null);
 
-  const handleMovieAdd = (movie:Movie) => {
-  };
+  const handleMovieAdd = (movie: Movie) => {  };
+
   const handleMovieRemove = () => {
-    if (selectedMovie) {}
+    if (selectedMovie) { }
     handleClose();
   };
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
 
-  const handleClick = (event: React.MouseEvent<HTMLElement>,movie:Movie) => {
-    setSelectedMovie(movie)
+  const handleClick = (event: React.MouseEvent<HTMLElement>, movie: Movie) => {
+    setSelectedMovie(movie);
     setAnchorEl(event.currentTarget);
   };
   const handleClose = () => {
@@ -48,7 +42,7 @@ function MoviesPlaylist({data}:MoviesPlaylistProps) {
   const renderedMovies = data.map((movie) => {
     return (
       <Grid item xs={12} sm={6} md={4} lg={3} key={movie.id}>
-        <Card sx={{ maxWidth: 345, height: 365  }} key={movie.id}>
+        <Card sx={{ maxWidth: 345 }} key={movie.id}>
           <CardHeader
             avatar={
               <Avatar sx={{ bgcolor: "red" }} aria-label="recipe">
@@ -56,7 +50,10 @@ function MoviesPlaylist({data}:MoviesPlaylistProps) {
               </Avatar>
             }
             action={
-              <IconButton aria-label="settings" onClick={(e)=>handleClick(e,movie)}>
+              <IconButton
+                aria-label="settings"
+                onClick={(e) => handleClick(e, movie)}
+              >
                 <MoreVertIcon />
               </IconButton>
             }
@@ -86,26 +83,32 @@ function MoviesPlaylist({data}:MoviesPlaylistProps) {
           style={{}}
           anchorEl={anchorEl}
           anchorOrigin={{
-            vertical: 'bottom',
-            horizontal: 'center',
+            vertical: "bottom",
+            horizontal: "center",
           }}
           transformOrigin={{
-            vertical: 'top',
-            horizontal: 'right',
+            vertical: "top",
+            horizontal: "right",
           }}
           open={open}
           onClose={handleClose}
           TransitionComponent={Fade}
         >
-          <MenuItem
-            onClick={handleMovieRemove}
-          >
+          <MenuItem onClick={handleMovieRemove}>
             Delete <DeleteIcon sx={{ marginLeft: 1 }} />
           </MenuItem>
         </Menu>
       </Grid>
     );
   });
+
+  if (isLoadingMovies) {
+    return <LoadingSkeleton />;
+  }
+
+  if (loadingMoviesError) {
+    return <div>Error fetching data</div>;
+  }
 
   return (
     <div

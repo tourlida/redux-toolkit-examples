@@ -1,6 +1,6 @@
 import { Button, Divider } from "@mui/material";
 import MoviePlaylist from "./components/MoviesPlaylist";
-import SongPlaylist from "./components/SongsPlaylist";
+import SongsPlaylist from "./components/SongsPlaylist";
 import RestartAltIcon from "@mui/icons-material/RestartAlt";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "./store";
@@ -9,9 +9,17 @@ export default function App() {
   const dispatch = useDispatch();
   const handleResetClick = () => {};
 
-  // Use selectors to get data in the App component
-  const movies = useSelector((state: RootState) => state.movies.data);
-  const songs = useSelector((state: RootState) => state.songs.data);
+   // Use selectors to get data in the App component
+   const {
+    isLoading: moviesLoading,
+    error: moviesError,
+    data: moviesData,
+  } = useSelector((state: RootState) => state.movies);
+  const {
+    isLoading: songsLoading,
+    error: songsError,
+    data: songsData,
+  } = useSelector((state: RootState) => state.songs);
 
   return (
     <>
@@ -25,9 +33,9 @@ export default function App() {
         Reset Both Playlists
       </Button>
       <Divider />
-      <MoviePlaylist data={movies} />
+      <MoviePlaylist data={moviesData} isLoading={moviesLoading} error={moviesError}/>
       <Divider />
-      <SongPlaylist data={songs} />
+      <SongsPlaylist data={songsData} isLoading={songsLoading} error={songsError}/>
     </>
   );
 }

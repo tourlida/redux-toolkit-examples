@@ -15,21 +15,29 @@ import {
 } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import DeleteIcon from "@mui/icons-material/Delete";
 import LibraryMusicIcon from "@mui/icons-material/LibraryMusic";
 import { Song } from "../models/index.tsx";
 import { createRandomSong } from "../utils.tsx/index.tsx";
+import { RootState } from "../store/index.tsx";
+import { useDispatch, useSelector } from "react-redux";
+import LoadingSkeleton from "./LoadingSkeleton.tsx";
 
-
-interface SongPlaylistProps{
+interface SongsPlaylistProps{
+  isLoading: boolean;
   data: Song[];
+  erro:string | null;
 }
-function SongPlaylist({data}:SongPlaylistProps) {
+
+function SongsPlaylist({
+  data,
+  isLoading: isLoadingSongs,
+  error: loadingSongsError,
+}: SongsPlaylistProps) {
   const [selectedSong, setSelectedSong] = useState<Song | null>(null);
 
-  const handleSongAdd = (song: Song) => {
-  };
+  const handleSongAdd = (song: Song) => { };
 
   const handleSongRemove = () => {
     if (selectedSong) {}
@@ -48,9 +56,17 @@ function SongPlaylist({data}:SongPlaylistProps) {
     setAnchorEl(null);
   };
 
+  if (isLoadingSongs) {
+    return <LoadingSkeleton />;
+  }
+
+  if (loadingSongsError) {
+    return <div>Error fetching data</div>;
+  }
+
   const renderedSongs = data.map((song) => (
     <Grid item xs={12} sm={6} md={4} lg={3} key={song.id}>
-      <Card sx={{ maxWidth: 345 , height: 365 }}>
+      <Card sx={{ maxWidth: 345 }}>
         <CardHeader
           avatar={
             <Avatar sx={{ bgcolor: "red" }} aria-label="recipe">
@@ -131,4 +147,4 @@ function SongPlaylist({data}:SongPlaylistProps) {
   );
 }
 
-export default SongPlaylist;
+export default SongsPlaylist;
