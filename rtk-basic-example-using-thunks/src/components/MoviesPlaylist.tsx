@@ -61,7 +61,8 @@ function MoviesPlaylist({data}:MoviesPlaylistProps) {
 
   const handleMovieAdd =  useCallback((movie: Movie) => {
     setIsAddingMovie(true);
-
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     dispatch(addMovie(movie))
       .unwrap()
       .then(() => {

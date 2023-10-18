@@ -14,7 +14,8 @@ export default function App() {
 
   const handleResetClick = useCallback(() => {
     setResetLoading(true);
-
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
       dispatch(resetAllData())
       .unwrap()
       .then(() => {

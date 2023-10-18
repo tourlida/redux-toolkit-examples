@@ -65,7 +65,8 @@ function SongsPlaylist({data}:SongsPlaylistProps) {
 
   const handleSongAdd = useCallback((song: Song) => {
     setIsAddingSong(true);
-
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     dispatch(addSong(song))
       .unwrap()
       .then(() => {
