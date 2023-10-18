@@ -40,10 +40,13 @@ function MoviesPlaylist({data}:MoviesPlaylistProps) {
 
   const fetchMoviesFromServer = useCallback(() => {
     setIsLoadingMovies(true);
-
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     dispatch(fetchMovies())
       .unwrap()
       .then(() => {})
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
       .catch((err) => setLoadingMoviesError(err))
       .finally(() => setIsLoadingMovies(false));
   },[dispatch]);
@@ -96,6 +99,8 @@ function MoviesPlaylist({data}:MoviesPlaylistProps) {
 
   const handleMovieRemove = useCallback(() => {
     if (selectedMovie) {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
       dispatch(deleteMovie(selectedMovie.id))
         .unwrap()
         .then(() => {

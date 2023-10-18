@@ -42,10 +42,13 @@ function SongsPlaylist({data}:SongsPlaylistProps) {
 
   const fetchSongsFromServer = useCallback(() => {
     setIsLoadingSongs(true);
-
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     dispatch(fetchSongs())
       .unwrap()
       .then(() => setLoadingSongsError(null))
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
       .catch((err) => setLoadingSongsError(err))
       .finally(() => setIsLoadingSongs(false));
   },[dispatch]);
@@ -100,6 +103,8 @@ function SongsPlaylist({data}:SongsPlaylistProps) {
 
   const handleSongRemove =useCallback(() => {
     if (selectedSong) {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
       dispatch(deleteSong(selectedSong.id))
         .unwrap()
         .then(() => {
