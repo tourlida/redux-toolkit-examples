@@ -50,6 +50,8 @@ const songsSlice = createSlice({
     builder.addCase(deleteSong.fulfilled, (state: SongsState, action) => {
       state.isLoading = false;
       state.data = state.data.filter((movie: Song) => {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
         return movie.id !== action.payload;
       });
     });
