@@ -1,6 +1,6 @@
 //moviesSlice.tsx
 import { ActionReducerMapBuilder, createSlice } from "@reduxjs/toolkit";
-import { MovieState, reset } from "..";
+import { MovieState } from "..";
 
 
 const initialMoviesState:MovieState = {
@@ -14,12 +14,7 @@ const moviesSlice = createSlice({
     initialState:initialMoviesState,
     reducers: { },
     // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-explicit-any
-    extraReducers(builder: ActionReducerMapBuilder<any>) {
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-explicit-any
-        builder.addCase(reset.type, (_state: any, _action: any) => {
-          return [];
-        });
-    },
+    extraReducers(builder: ActionReducerMapBuilder<any>) {},
  });
 
   export const moviesReducer = moviesSlice.reducer;
