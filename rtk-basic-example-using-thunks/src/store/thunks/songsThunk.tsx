@@ -2,15 +2,6 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { Song } from "../../models";
 
-// Fetch songs
-export const fetchSongs = createAsyncThunk(
-  'songs/fetchSongs',
-  async () => {
-    const response = await axios.get('http://localhost:3005/songs');
-    return response.data;
-  }
-);
-
 // Add a new song
 export const addSong = createAsyncThunk(
   'songs/addSong',

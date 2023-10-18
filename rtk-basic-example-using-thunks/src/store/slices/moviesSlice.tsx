@@ -21,20 +21,6 @@ const moviesSlice = createSlice({
   reducers: {},
   // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-explicit-any
   extraReducers(builder: ActionReducerMapBuilder<any>) {
-    //Fetch movie
-    builder.addCase(fetchMovies.pending, (state: MovieState) => {
-      state.isLoading = true;
-    });
-
-    builder.addCase(fetchMovies.fulfilled, (state: MovieState, action) => {
-      state.isLoading = false;
-      state.data = action.payload;
-    });
-    builder.addCase(fetchMovies.rejected, (state: MovieState, action) => {
-      state.isLoading = false;
-      state.error = action.error;
-    });
-
     //Add movie
     builder.addCase(addMovie.pending, (state: MovieState) => {
       state.isLoading = true;

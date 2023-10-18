@@ -15,20 +15,6 @@ const songsSlice = createSlice({
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-explicit-any
   extraReducers(builder: ActionReducerMapBuilder<any>) {
-    //Fetch songs
-    builder.addCase(fetchSongs.pending, (state: SongsState) => {
-      state.isLoading = true;
-    });
-
-    builder.addCase(fetchSongs.fulfilled, (state: SongsState, action) => {
-      state.isLoading = false;
-      state.data = action.payload;
-    });
-    builder.addCase(fetchSongs.rejected, (state: SongsState, action) => {
-      state.isLoading = false;
-      state.error = action.error;
-    });
-
     //Add song
     builder.addCase(addSong.pending, (state: SongsState) => {
       state.isLoading = true;
