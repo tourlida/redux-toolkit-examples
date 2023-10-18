@@ -97,7 +97,7 @@ Though the UI harks back to our old design, the mechanics, especially data handl
 1. **Clone the project**:
 
    ```bash
-   git clone [Your Repository Link Here]
+   git clone https://github.com/tourlida/redux-toolkit-examples.git
    ```
 2. **Navigate to the correct repo**:
 
