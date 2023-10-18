@@ -1,5 +1,5 @@
 //moviesSlice.tsx
-import { Action, ActionReducerMapBuilder, createSlice } from "@reduxjs/toolkit";
+import { ActionReducerMapBuilder, createSlice } from "@reduxjs/toolkit";
 import {
   MovieState,
   addMovie,
