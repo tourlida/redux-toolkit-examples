@@ -131,7 +131,7 @@ function MoviesPlaylist({
     setAnchorEl(event.currentTarget);
   };
 
-  if (isLoadingMovies) {
+  if (!isAddingMovie &&isLoadingMovies) {
     return <LoadingSkeleton />;
   }
 

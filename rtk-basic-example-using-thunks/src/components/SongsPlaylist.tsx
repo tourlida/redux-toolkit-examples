@@ -127,7 +127,7 @@ function SongsPlaylist({data,isLoading:isLoadingSongs,error:loadingSongsError}:S
     setAnchorEl(event.currentTarget);
   };
 
-  if (isLoadingSongs) {
+  if (!isAddingSong && isLoadingSongs) {
     return <LoadingSkeleton />;
   }
 
